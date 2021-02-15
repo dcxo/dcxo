@@ -9,7 +9,7 @@
      || 
     <a href="https://www.linkedin.com/in/dcxo/"><strong>LinkedIn</strong></a>
      || 
-    <a href="https://blog.dcxo.dev"><strong>Blog (WIP)</strong></a>
+    <a><strong><s>Blog (WIP)</s></strong></a>
 </p>
 
 
