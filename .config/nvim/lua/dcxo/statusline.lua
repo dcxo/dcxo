@@ -13,14 +13,17 @@ local colors = {
     [''] = "cyan",
     R = "red",
     Rv = "red",
-    ['?'] = "magenta"
+    s = 'purple',
+    S = 'purple',
+    [''] = 'purple',
+    ['?'] = "purple"
 }
 local function get_light_color()
-    return color['light_'..(colors[vim.fn.mode() or '?'])]
+    return color['light_'..(colors[vim.fn.mode()] or "purple")]
 end
 
 local function get_color()
-    return color[(colors[vim.fn.mode() or '?'])]
+    return color[(colors[vim.fn.mode()] or 'purple')]
 end
 
 local function highlight(group, fg, bg, gui)
@@ -29,13 +32,24 @@ local function highlight(group, fg, bg, gui)
     vim.cmd(cmd)
 end
 
--- highlight('StatusLine', 'none', 'none')
+local alias = {
+    n = 'N',
+    i = 'I',
+    c = 'C',
+    v = 'V',
+    V = 'VL',
+    [''] = 'VB',
+    R = 'R',
+    Rv = 'RV',
+    s = 'S',
+    S= 'SL',
+    [''] = 'SB'
+}
 
 gls.left = {
     {
         ViMode = {
             provider = function()
-                local alias ={n = 'N', i = 'I', c = 'C', v = 'V', V = 'VL', [''] = 'VB', R = 'R', Rv = 'RV'}
                 highlight('GalaxyViMode', color.bg, get_color(), 'bold')
                 highlight('GalaxyViModeInv', get_color(), conds.buffer_not_empty() and get_light_color() or 'NONE', 'bold')
                 return "  " .. (alias[vim.fn.mode()] or '?') .. " "

@@ -15,6 +15,9 @@ Opt = setmetatable({}, {
   end
 })
 
+vim.g.neovide_cursor_antialias = true
+Opt.guifont = "Xiosevka:h16"
+
 require('vimp')
 
 require('dcxo.options')

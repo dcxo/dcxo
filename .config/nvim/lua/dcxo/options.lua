@@ -25,6 +25,7 @@ Opt.wrap = true
 Opt.wrapmargin = 0
 Opt.writebackup = false
 Opt.autowriteall = true
+Opt.omnifunc = "v:lua.vim.lsp.omnifunc"
 
 vim.g.mapleader  =  ' '
 

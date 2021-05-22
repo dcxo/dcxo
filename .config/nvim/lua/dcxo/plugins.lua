@@ -9,6 +9,9 @@ return require('packer').startup(function()
 	use 'simrat39/rust-tools.nvim'
 	use 'kabouzeid/nvim-lspinstall'
     use 'glepnir/lspsaga.nvim'
+    use 'ray-x/lsp_signature.nvim'
+    use 'hrsh7th/vim-vsnip'
+    use 'cohama/lexima.vim'
 
 	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 	use 'nvim-treesitter/nvim-treesitter-textobjects'
@@ -28,7 +31,8 @@ return require('packer').startup(function()
 	use 'svermeulen/vimpeccable'
 	use 'nekonako/xresources-nvim'
     use 'glepnir/zephyr-nvim'
-    use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+    use "junegunn/goyo.vim"
+    use "junegunn/limelight.vim"
 
     use {'prettier/vim-prettier', run = "npm install"}
 

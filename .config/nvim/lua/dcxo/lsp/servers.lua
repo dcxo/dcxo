@@ -1,21 +1,7 @@
 local lsp = require 'lspconfig'
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-        underline = true,
-        virtual_text = true,
-        signs = true,
-        update_in_insert = true,
-    }
-)
-
-vim.cmd [[
-    hi LspDiagnosticsVirtualTextError gui=undercurl
-]]
-
 -- TODO: Move from here, makes no sense
 local on_attach = function(client, bufnr)
-    Opt.omnifunc = 'v:lua.vim.lsp.omnifunc'
 
     if client.resolved_capabilities.document_formatting then
         vim.api.nvim_command [[au BufWritePre <buffer> lua vim.lsp.buf.formatting()]]
@@ -37,12 +23,20 @@ end
 local function make_config()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
+  capabilities.textDocument.completion.completionItem.resolveSupport = {
+    properties = {
+      'documentation',
+      'detail',
+      'additionalTextEdits',
+    }
+  }
   return {
     capabilities = capabilities,
     on_attach = on_attach,
   }
 end
 
+local pid = vim.fn.getpid()
 local servers_config = {
     ["sumneko_lua"] = {
         cmd = {'lua-language-server'},
@@ -72,12 +66,19 @@ local servers_config = {
                 },
             }
         }
+    },
+    [ 'java_language_server'] = {
+        cmd = {'java-language-server'}
+    },
+    ['omnisharp'] = {
+        cmd = { '/usr/bin/omnisharp', "--languageserver" , "--hostPID", tostring(pid) };
     }
 }
 
-local servers = {'sumneko_lua', 'gopls', 'rust_analyzer', 'svelte', 'tsserver'}
+local servers = {'sumneko_lua', 'gopls', 'rust_analyzer', 'svelte', 'tsserver', 'clangd', 'java_language_server', 'kotlin_language_server', 'omnisharp'}
 for _, server in pairs(servers) do
     local config = make_config()
     if servers_config[server] then config = vim.tbl_extend('error', config, servers_config[server]) end
     lsp[server].setup(config)
 end
+require("lsp_signature").on_attach()
