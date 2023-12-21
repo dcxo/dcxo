@@ -1,0 +1,75 @@
+---
+import esJson from "locales/es.json";
+import enJson from "locales/en.json";
+
+const defaultLocale = "data-es";
+
+const locales = {
+    es: esJson,
+    en: enJson,
+};
+
+type Leaves<T> = T extends object
+    ? {
+          [K in keyof T]: `${Exclude<K, symbol>}${Leaves<T[K]> extends never
+              ? ""
+              : `.${Leaves<T[K]>}`}`;
+      }[keyof T]
+    : never;
+
+export type TranslationKeys = Leaves<typeof esJson>;
+
+export type Props = { key: TranslationKeys };
+
+const { key } = Astro.props;
+const keyParts = key.split(".");
+let esTranslation = keyParts.reduce(
+    (prevValue, currValue) => prevValue[currValue],
+    locales.es as any,
+) as string;
+let enTranslation = keyParts.reduce(
+    (prevValue, currValue) => prevValue[currValue],
+    locales.en as any,
+) as string;
+
+if (
+    Astro.slots.has("default") &&
+    esTranslation.includes("<0>") &&
+    enTranslation.includes("<0>")
+) {
+    enTranslation = enTranslation.replace(
+        "<0>",
+        await Astro.slots.render("default"),
+    );
+    esTranslation = esTranslation.replace(
+        "<0>",
+        await Astro.slots.render("default"),
+    );
+}
+
+const translations = {
+    "data-es": esTranslation,
+    "data-en": enTranslation,
+};
+---
+
+<dcxo-t
+    class="contents"
+    {...translations}
+    set:html={translations[defaultLocale]}
+/>
+
+<script>
+    class TranslatableText extends HTMLElement {
+        constructor() {
+            super();
+
+            let actualLang = navigator.language.split("-")[0];
+            const translation = this.dataset[actualLang];
+            if (!!translation) {
+                this.innerHTML = translation;
+            }
+        }
+    }
+    customElements.define("dcxo-t", TranslatableText);
+</script>

@@ -1,43 +1,39 @@
 ---
 import { cx } from "cva";
-import { Icon } from "astro-icon";
 import Typography from "components/Typography.astro";
+import React from "components/utils/React.astro";
 import MainLayout from "../layout/MainLayout.astro";
 import Button, { buttonStyles } from "components/Button.astro";
+import T from "components/T.astro";
 ---
 
 <MainLayout>
     <header class="h-full-dynamic flex flex-col justify-between">
         <div></div>
         <div class="px-14 md:px-40">
-            <Typography as="h3" butIs="h1" weight="black">
-                Hola, Soy David 👋
-            </Typography>
+            <Typography
+                as="h3"
+                butIs="h1"
+                weight="black"
+                translationKey="header.title"
+            />
             <Typography
                 as="h4"
                 butIs="h2"
                 weight="bold"
-                class="text-neutral-900 dark:text-neutral-100"
+                class="text-neutral-900 dark:text-neutral-100 block"
             >
-                Desarrollador web con amor por
-                <span
-                    class="text-react-light dark:text-react-dark"
-                    title="Pero no... Está página no está en React"
-                >
-                    React
-                    <span class="icon-[mdi--react] animate-spin-react"></span>
-                </span>
+                <T key="header.subtitle">
+                    <React />
+                </T>
             </Typography>
             <Typography
                 as="h4"
                 butIs="h2"
                 class="text-neutral-900 dark:text-neutral-100"
-            >
-                Interfaces amigables, siempre.
-                <span
-                    class="icon-[mdi--heart] text-secondary-400 animate-bounce"
-                ></span>
-            </Typography>
+                data-t="subsubtitle"
+                translationKey="header.subsubtitle"
+            />
         </div>
         <nav class="flex justify-between gap-4 m-4">
             <div></div>
@@ -61,7 +57,7 @@ import Button, { buttonStyles } from "components/Button.astro";
             </div>
 
             <Button aria-label="Alternar modo oscuro" data-toggle-colorscheme>
-                <Icon class="w-6 m-auto" name="mdi:theme-light-dark" />
+                <span class="icon-[mdi--theme-light-dark]"></span>
             </Button>
         </nav>
     </header>
@@ -89,20 +85,20 @@ import Button, { buttonStyles } from "components/Button.astro";
 
     @keyframes pulse-header {
         45% {
-            --inc: 15vmin;
+            --inc: 14vmin;
         }
         50% {
             --radius: 35vmin;
-            --inc: 15vmin;
+            --inc: 14vmin;
         }
-        60% {
+        65% {
             --radius: 35vmin;
         }
     }
 
     header {
         --circle-color: var(--color-primary-500);
-        animation: pulse-header 14s infinite;
+        animation: pulse-header ease 14s infinite;
         background: radial-gradient(
                 circle at top right,
                 var(--circle-color) 0 var(--radius),
@@ -120,6 +116,10 @@ import Button, { buttonStyles } from "components/Button.astro";
                     calc(var(--radius) + var(--inc) + var(--inc)),
                 transparent calc(var(--radius) + var(--inc) + var(--inc))
             );
+    }
+
+    [data-hey]::after {
+        content: "👋";
     }
 
     :global(.dark) header {

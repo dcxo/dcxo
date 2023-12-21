@@ -1,5 +1,7 @@
 ---
 import { cva, cx, type VariantProps } from "cva";
+import type { TranslationKeys } from "./T.astro";
+import T from "./T.astro";
 
 const variants = cva({
     base: ["font-inter"],
@@ -35,7 +37,8 @@ export type Props = Omit<VariantType, "as"> &
     Required<Pick<VariantType, "as">> & {
         content?: string;
         class?: string;
-        butIs?: VariantType["as"];
+        butIs?: VariantType["as"] | "span";
+        translationKey?: TranslationKeys;
     };
 
 const {
@@ -45,11 +48,13 @@ const {
     class: classname,
     butIs,
     content,
+    translationKey,
+    ...props
 } = Astro.props;
 
 const As = butIs ?? as;
 ---
 
-<As class={cx(variants({ as, color, weight }), classname)}>
-    {content ?? <slot />}
+<As class={cx(variants({ as, color, weight }), classname)} {...props}>
+    {translationKey ? <T key={translationKey} /> : content ?? <slot />}
 </As>
