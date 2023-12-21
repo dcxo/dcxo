@@ -1,10 +1,11 @@
 import { defineConfig } from "astro/config";
-import purgecss from "astro-purgecss";
 
 import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
+    site: "https://dcxo.github.io",
+    base: "/dcxo",
     devToolbar: {
         enabled: false,
     },
