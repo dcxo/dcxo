@@ -36,7 +36,8 @@ jobs:
       - name: Build Astro
         run: pnpm build
   deploy:
-    needs: Deploy
+    name: Deploy
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
