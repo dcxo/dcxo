@@ -1,0 +1,128 @@
+---
+import { cx } from "cva";
+import { Icon } from "astro-icon";
+import Typography from "components/Typography.astro";
+import MainLayout from "../layout/MainLayout.astro";
+import Button, { buttonStyles } from "components/Button.astro";
+---
+
+<MainLayout>
+    <header class="h-full-dynamic flex flex-col justify-between">
+        <div></div>
+        <div class="px-14 md:px-40">
+            <Typography as="h3" butIs="h1" weight="black">
+                Hola, Soy David 👋
+            </Typography>
+            <Typography
+                as="h4"
+                butIs="h2"
+                weight="bold"
+                class="text-neutral-900 dark:text-neutral-100"
+            >
+                Desarrollador web con amor por
+                <span
+                    class="text-react-light dark:text-react-dark"
+                    title="Pero no... Está página no está en React"
+                >
+                    React
+                    <span class="icon-[mdi--react] animate-spin-react"></span>
+                </span>
+            </Typography>
+            <Typography
+                as="h4"
+                butIs="h2"
+                class="text-neutral-900 dark:text-neutral-100"
+            >
+                Interfaces amigables, siempre.
+                <span
+                    class="icon-[mdi--heart] text-secondary-400 animate-bounce"
+                ></span>
+            </Typography>
+        </div>
+        <nav class="flex justify-between gap-4 m-4">
+            <div></div>
+            <div class="flex gap-4">
+                <a
+                    class={cx(buttonStyles(), "block text-md")}
+                    target="_blank"
+                    aria-label="Github"
+                    href="https://github.com/dcxo"
+                >
+                    <span class="icon-[mdi--github]"></span>
+                </a>
+                <a
+                    class={cx(buttonStyles(), "block text-md")}
+                    target="_blank"
+                    aria-label="LinkedIn"
+                    href="https://linkedin.com/in/dcxo"
+                >
+                    <span class="icon-[mdi--linkedin]"></span>
+                </a>
+            </div>
+
+            <Button aria-label="Alternar modo oscuro" data-toggle-colorscheme>
+                <Icon class="w-6 m-auto" name="mdi:theme-light-dark" />
+            </Button>
+        </nav>
+    </header>
+</MainLayout>
+
+<script>
+    import { toggleColorscheme } from "lib/darkMode";
+    document
+        .querySelector("[data-toggle-colorscheme]")
+        ?.addEventListener("click", () => toggleColorscheme());
+</script>
+
+<style>
+    @property --radius {
+        syntax: "<length>";
+        initial-value: 30vmin;
+        inherits: false;
+    }
+
+    @property --inc {
+        syntax: "<length>";
+        initial-value: 10vmin;
+        inherits: false;
+    }
+
+    @keyframes pulse-header {
+        45% {
+            --inc: 15vmin;
+        }
+        50% {
+            --radius: 35vmin;
+            --inc: 15vmin;
+        }
+        60% {
+            --radius: 35vmin;
+        }
+    }
+
+    header {
+        --circle-color: var(--color-primary-500);
+        animation: pulse-header 14s infinite;
+        background: radial-gradient(
+                circle at top right,
+                var(--circle-color) 0 var(--radius),
+                transparent var(--radius)
+            ),
+            radial-gradient(
+                circle at top right,
+                color-mix(in srgb, var(--circle-color) 40%, transparent) 0
+                    calc(var(--radius) + var(--inc)),
+                transparent calc(var(--radius) + var(--inc))
+            ),
+            radial-gradient(
+                circle at top right,
+                color-mix(in srgb, var(--circle-color) 16%, transparent) 0
+                    calc(var(--radius) + var(--inc) + var(--inc)),
+                transparent calc(var(--radius) + var(--inc) + var(--inc))
+            );
+    }
+
+    :global(.dark) header {
+        --circle-color: var(--color-primary-300);
+    }
+</style>

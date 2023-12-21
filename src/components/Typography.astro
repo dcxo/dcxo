@@ -1,0 +1,55 @@
+---
+import { cva, cx, type VariantProps } from "cva";
+
+const variants = cva({
+    base: ["font-inter"],
+    variants: {
+        as: {
+            h1: ["text-3xl"],
+            h2: ["text-2xl"],
+            h3: ["text-xl"],
+            h4: ["text-lg"],
+            h5: ["text-md"],
+            h6: ["text-base"],
+            p: ["text-base"],
+            small: ["text-sm"],
+        },
+        weight: {
+            black: ["font-black"],
+            bold: ["font-bold"],
+            normal: ["font-normal"],
+            thin: ["font-light"],
+        },
+        color: {
+            currentColor: ["text-current"],
+            primary: ["text-primary-500"],
+            secondary: ["text-secondary-500"],
+            invert: ["dark:text-neutral-950 text-neutral-50"],
+        },
+    },
+});
+
+type VariantType = VariantProps<typeof variants>;
+
+export type Props = Omit<VariantType, "as"> &
+    Required<Pick<VariantType, "as">> & {
+        content?: string;
+        class?: string;
+        butIs?: VariantType["as"];
+    };
+
+const {
+    as = "p",
+    color = "currentColor",
+    weight = "normal",
+    class: classname,
+    butIs,
+    content,
+} = Astro.props;
+
+const As = butIs ?? as;
+---
+
+<As class={cx(variants({ as, color, weight }), classname)}>
+    {content ?? <slot />}
+</As>

@@ -1,0 +1,9 @@
+root = true
+
+[*.{js,ts,astro}]
+indent_size = 4
+indent_style = space
+
+[*]
+indent_size = 4
+indent_style = space

@@ -1,0 +1,32 @@
+---
+import { cva, cx, compose, type VariantProps } from "cva";
+import { containerStyle } from "styles/utils";
+
+export const buttonStyles = compose(
+    cva({
+        base: "min-w-[48px] min-h-[48px] flex justify-center items-center focus:outline-none",
+        variants: {
+            color: {
+                primary:
+                    "dark:bg-primary-500 bg-primary-300 border-primary-400 text-neutral-950 hover:dark:bg-primary-400 hover:bg-primary-200",
+                secondary:
+                    "dark:bg-secondary-500 dark:hover:bg-secondary-400 bg-secondary-300 hover:bg-secondary-200 border-secondary-400",
+                none: "dark:hover:bg-neutral-800 hover:bg-neutral-100",
+            },
+        },
+        defaultVariants: {
+            color: "none",
+        },
+    }),
+    containerStyle,
+);
+
+export type Props = VariantProps<typeof buttonStyles> & { class?: string };
+---
+
+<button
+    class={cx(buttonStyles(Astro.props), Astro.props.class)}
+    {...Astro.props}
+>
+    <slot />
+</button>

@@ -1,0 +1,29 @@
+---
+import "@fontsource-variable/inter/slnt.css";
+import colors from "styles/colors";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content={colors.primary[500]} />
+        <meta
+            name="description"
+            content="¡Hola! Soy David, un apasionado desarrollador web especializado en React y versado en diversas tecnologías. Explora mi portfolio para descubrir proyectos innovadores, soluciones creativas y mi dedicación a ofrecer experiencias web excepcionales. ¡Bienvenido a mi mundo digital!"
+        />
+        <title>David - Desarrollador Web especializado en React</title>
+    </head>
+
+    <body
+        class="w-full bg-neutral-50 dark:bg-neutral-950 min-h-screen text-neutral-950 dark:text-neutral-50"
+    >
+        <slot />
+    </body>
+</html>
+
+<script>
+    import { detectColorscheme } from "lib/darkMode";
+    detectColorscheme();
+</script>
