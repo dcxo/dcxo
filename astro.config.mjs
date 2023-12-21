@@ -4,8 +4,8 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://dcxo.github.io",
-    base: "/dcxo",
+    site: "https://dcxo.dev",
+    base: "/",
     devToolbar: {
         enabled: false,
     },
