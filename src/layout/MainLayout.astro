@@ -1,10 +1,11 @@
 ---
 import "@fontsource-variable/inter/slnt.css";
+import { defaultLocale } from "components/T.astro";
 import colors from "styles/colors";
 ---
 
 <!doctype html>
-<html>
+<html lang={defaultLocale}>
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,7 +14,7 @@ import colors from "styles/colors";
             name="keywords"
             content="Desarrollador web, React, Tecnologías web, David Castilla Ortiz, Proyectos web, Experiencia de usuario, HTML, CSS, JavaScript, Portafolio, Innovación tecnológica"
         />
-        <!-- TODO: Make it translatable -->
+        <!-- TODO: Make it translatable (?) -->
         <meta
             name="description"
             content="¡Hola! Soy David, un apasionado desarrollador web especializado en React y versado en diversas tecnologías. Explora mi portfolio para descubrir proyectos innovadores, soluciones creativas y mi dedicación a ofrecer experiencias web excepcionales. ¡Bienvenido a mi mundo digital!"
@@ -28,6 +29,7 @@ import colors from "styles/colors";
         <script>
             import { detectColorscheme } from "lib/darkMode";
             detectColorscheme();
+            document.documentElement.lang = navigator.language;
         </script>
     </body>
 </html>
