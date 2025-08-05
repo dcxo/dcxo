@@ -19,15 +19,11 @@ jobs:
       - name: Setup Typst
         uses: typst-community/setup-typst@v4.2.0
 
-      - uses: fontist/setup-fontist@v2
-
-      - run: fontist install "Inter"
-
       - name: Compile Spanish CV
-        run: typst compile --input lang=es main.typ DavidCastillaOrtizES.pdf --font-path ~/.fontist/fonts
+        run: typst compile --input lang=es main.typ DavidCastillaOrtizES.pdf --font-path ./fonts
 
       - name: Compile English CV
-        run: typst compile --input lang=en main.typ DavidCastillaOrtizEN.pdf --font-path ~/.fontist/fonts
+        run: typst compile --input lang=en main.typ DavidCastillaOrtizEN.pdf --font-path ./fonts
 
       - name: Upload PDFs as release assets
         uses: softprops/action-gh-release@v1
