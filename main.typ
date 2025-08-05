@@ -16,7 +16,6 @@
   #it
   // #place(dy: -1.5mm, line(length: 100%))
 ]
-#show heading.where(level: 2): smallcaps
 #show heading.where(level: 2): set text(weight: "extrabold")
 #show heading.where(level: 3): it => [
   #it
