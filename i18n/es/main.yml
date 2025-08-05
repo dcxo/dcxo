@@ -1,0 +1,15 @@
+remote:
+  full: Remoto
+  parcial: Remoto Parcial
+
+brief: |
+  Desarrollador web especializado en frontend (React, Next.js, TypeScript, Svelte), con experiencia en optimización de rendimiento, refactorización, uso de APIs REST y backend con C# y Go.
+
+city: Córdoba, España
+
+current_job: Actualidad
+
+section_titles:
+  experience: Experiencia
+  education: Educación
+  skills: Habilidades Técnicas

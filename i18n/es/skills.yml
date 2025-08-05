@@ -1,0 +1,37 @@
+- name: Lenguajes
+  skills:
+    - TypeScript
+    - JavaScript
+    - C#
+    - Go
+    - Rust
+- name: Frontend
+  skills:
+    - React
+    - Next.js
+    - Zustand
+    - Redux
+    - React Query
+    - Svelte
+    - HTML
+    - CSS
+    - Vite
+    - Jest
+- name: Backend
+  skills:
+    - C#
+    - Go
+    - Diseño e integración de APIs RESTful
+- name: Herramientas
+  skills:
+    - Git
+    - GitHub
+    - Postman
+    - Docker
+    - JIRA
+- name: Otros
+  skills:
+    - CI/CD (GitHub Actions)
+    - Control de versiones
+    - Agile/Scrum
+    - Refactorización de código

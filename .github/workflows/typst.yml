@@ -1,0 +1,37 @@
+name: Compile Typst and Upload PDFs
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: 'cv'
+
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v4.2.0
+
+      - uses: fontist/setup-fontist@v2
+
+      - run: fontist install "Inter"
+
+      - name: Compile Spanish CV
+        run: typst compile --input lang=es main.typ DavidCastillaOrtizES.pdf --font-path ~/.fontist/fonts
+
+      - name: Compile English CV
+        run: typst compile --input lang=en main.typ DavidCastillaOrtizEN.pdf --font-path ~/.fontist/fonts
+
+      - name: Upload PDFs as release assets
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            DavidCastillaOrtizES.pdf
+            DavidCastillaOrtizEN.pdf

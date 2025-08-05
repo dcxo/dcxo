@@ -1,0 +1,15 @@
+remote:
+  full: Remote
+  parcial: Hybrid Remote
+
+brief: |
+  Frontend-focused web developer (React, Next.js, TypeScript, Svelte) with expertise in performance optimization, refactoring, REST API integration, and backend development using C# and Go.
+
+city: Córdoba, Spain
+
+current_job: Present
+
+section_titles:
+  experience: Work Experience
+  education: Education
+  skills: Technical Skills

@@ -1,0 +1,32 @@
+- where: InnoCV
+  remote: full
+  from: 02/2024
+  to: current
+  title: Desarrollador Frontend
+  keypoints:
+    - Desarrollo de aplicaciones web en React (Redux, Zustand y React Query), empleando TypeScript como lenguaje principal.
+    - Diseño de interfaces orientadas a mejorar la toma de decisiones operativas mediante visualización de grandes volúmenes de datos.
+    - Refactorización profunda de un CMS personalizado con código heredado complejo, mejorando la mantenibilidad y facilitando la incorporación de nuevas funcionalidades.
+    - Colaboración estrecha con backend en C#; análisis del funcionamiento interno para alinear correctamente el comportamiento en frontend.
+
+- where: Telefónica
+  remote: full
+  from: 11/2022
+  to: 02/2024
+  title: Desarrollador Frontend
+  keypoints:
+    - Desarrollo desde cero de una aplicación en React y TypeScript, desarrollo sin dependencias externas para un control total de la implementación.
+    - Optimización del rendimiento para garantizar fluidez constante de 60 FPS en un entorno con fuertes restricciones de hardware.
+    - Enfoque en garantizar estabilidad y fluidez óptimas en entornos con restricciones de hardware severas, medido con herramientas estándar de desarrollo web.
+
+- where: Deuser
+  remote: Córdoba, España
+  from: 07/2021
+  to: 11/2022
+  title: Desarrollador Frontend
+  keypoints:
+    - Desarrollo de soluciones en Next.js (React) y TypeScript.
+    - Reducción del tiempo de carga en una aplicación crítica de más de 10 minutos a menos de 2 segundos mediante la migración de SSR a CSR, mejorando notablemente la experiencia de usuario y manteniendo la aplicación activa y comercializada actualmente.
+    - Desarrollo de funcionalidades backend en C#, incluyendo un websocket para monitorización en tiempo real de máquinas, gestionando transmisión eficiente de datos.
+    - Liderazgo técnico en un equipo de 4 personas, coordinando tareas y asegurando entregas en plazo en un entorno con supervisión limitada.
+

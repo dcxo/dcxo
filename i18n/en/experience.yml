@@ -1,0 +1,31 @@
+- where: InnoCV
+  remote: full
+  from: 02/2024
+  to: current
+  title: Frontend Developer
+  keypoints:
+    - Development of web applications in React (Redux, Zustand, and React Query), using TypeScript as the primary language.
+    - Design of interfaces aimed at improving operational decision-making through the visualization of large data volumes.
+    - Deep refactoring of a custom CMS with complex legacy code, enhancing maintainability and facilitating the addition of new features.
+    - Close collaboration with backend in C#; analysis of internal workings to correctly align frontend behavior.
+
+- where: Telefónica
+  remote: full
+  from: 11/2022
+  to: 02/2024
+  title: Frontend Developer
+  keypoints:
+    - Development from scratch of a React and TypeScript application, built without external dependencies for full control over implementation.
+    - Performance optimization to ensure a consistent 60 FPS fluidity in a hardware-constrained environment.
+    - Focus on guaranteeing stability and optimal smoothness in severely hardware-restricted environments, measured with standard web development tools.
+
+- where: Deuser
+  remote: Córdoba, Spain
+  from: 07/2021
+  to: 11/2022
+  title: Frontend Developer
+  keypoints:
+    - Development of solutions in Next.js (React) and TypeScript.
+    - Reduced loading time for a critical application from over 10 minutes to under 2 seconds by migrating from SSR to CSR, significantly improving user experience and keeping the application active and marketed to this day.
+    - Development of backend functionalities in C#, including a websocket for real-time machine monitoring, ensuring efficient data transmission.
+    - Technical leadership in a team of 4, coordinating tasks and ensuring on-time deliveries in an environment with limited supervision.
